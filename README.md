@@ -77,8 +77,10 @@ Profit
 ## Logged Password Output
 
 This will now log output in the form of:
-"time <Y-M-D H-M-S> : host = <IP_ADDR> : username = <USERNAME> : password = <PASSWORD>"
-to a `/var/log/passwords` file.
+
+```time <Y-M-D H-M-S> : host = <IP_ADDR> : username = <USERNAME> : password = <PASSWORD>```
+
+to the `/var/log/passwords` file.
 
 
 ### Important Note:
