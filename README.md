@@ -83,6 +83,19 @@ This will now log output in the form of:
 to the `/var/log/passwords` file.
 
 
+## Troubleshooting
+Send me a message or create an issue! Also, check to make sure that "UsePAM yes" exists in your /etc/sshd_config file and
+that password based authentication is enabled. In my case I use public key authentication by default when setting up a VPS
+on DigitalOcean, so PasswordAuthentication is disabled by default.
+```
+$ cat /etc/ssh/sshd_config | grep "UsePAM"
+UsePAM yes
+$ cat /etc/ssh/sshd_config | grep "PasswordAuthentication"
+PasswordAuthentication yes
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication, then enable this but set PasswordAuthentication
+```
+
 ### Important Note:
 Only usernames that exist on the system will have password data logged to the
 output. A more descriptive answer can be found
