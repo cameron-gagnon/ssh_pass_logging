@@ -95,8 +95,8 @@ module to log incorrect passwords before the "fake" password is set. A patch to
 do this can be found [here](https://gist.github.com/sjmurdoch/1572229).
 Otherwise, the owner of the system can periodically check for other common
 usernames in `/var/log/passwords` and create fake accounts with those usernames
-so the full data can be logged. __A script to easily create dummy accounts can be
-accessed in this repository under `honeypot_user.sh`__
+so the full data can be logged. __Two scripts to easily create dummy accounts can be
+accessed in this repository under `honeypot_user.sh` and `create_initial_users.sh`.__
 
 
 ### Reference/Sources
