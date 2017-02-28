@@ -86,7 +86,8 @@ to the `/var/log/passwords` file.
 ## Troubleshooting
 Send me a message or create an issue! Also, check to make sure that "UsePAM yes" exists in your /etc/sshd_config file and
 that password based authentication is enabled. In my case I use public key authentication by default when setting up a VPS
-on DigitalOcean, so PasswordAuthentication is disabled by default.
+on DigitalOcean, so PasswordAuthentication is disabled by default. Finally, make sure that "PermitRootLogin" is enabled so
+that ssh will allow attempts to log in at the root user.
 ```
 $ cat /etc/ssh/sshd_config | grep "UsePAM"
 UsePAM yes
@@ -94,6 +95,9 @@ $ cat /etc/ssh/sshd_config | grep "PasswordAuthentication"
 PasswordAuthentication yes
 # PasswordAuthentication.  Depending on your PAM configuration,
 # PAM authentication, then enable this but set PasswordAuthentication
+$ cat /etc/ssh/sshd_config | grep "PermitRootLogin"
+PermitRootLogin yes
+# the setting of "PermitRootLogin without-password".
 ```
 
 ### Important Note:
