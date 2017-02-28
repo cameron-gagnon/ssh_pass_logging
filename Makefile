@@ -11,3 +11,6 @@ clean:
 install:
 	cp ${OUTPUT} /lib/security/${OUTPUT}
 	service ssh restart
+
+init:
+	./create_initial_users.sh
