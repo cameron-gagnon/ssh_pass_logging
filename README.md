@@ -67,8 +67,8 @@ to the `/var/log/passwords` file.
 
 
 __Important Note:__
-Only usernames that exist on the system will have data logged to the output. A
-more descriptive answer can be found
+Only usernames that exist on the system will have password data logged to the
+output. A more descriptive answer can be found
 [here](https://superuser.com/questions/900417/pam-exec-so-doesnt-write-password-to-script-when-expose-authtok-is-enabled),
 and can be seen by exploring the `auth-pam.c` file in ssh's source.
 This is because of the way sshd + PAM work together. It is in a larger part to
@@ -77,8 +77,9 @@ non-existent users is important, one can build ssh from source and modify the
 module to log incorrect passwords before the "fake" password is set. A patch to
 do this can be found [here](https://gist.github.com/sjmurdoch/1572229).
 Otherwise, the owner of the system can periodically check for other common
-usernames in `/var/log/auth.log` and create fake accounts with those usernames
-so the full data can be logged.
+usernames in `/var/log/passwords` and create fake accounts with those usernames
+so the full data can be logged. __A script to easily create dummy accounts can be
+accessed in this repository under `honeypot_user.sh`__
 
 
 # Reference/Sources
