@@ -9,6 +9,7 @@ clean:
 	rm ${OUTPUT}
 
 install:
+	mkdir -p /lib/security
 	cp ${OUTPUT} /lib/security/${OUTPUT}
 	service ssh restart
 
