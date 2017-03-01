@@ -1,13 +1,11 @@
 #!/bin/bash
 
 # create the initial group
-groupadd -g 2000 honeypot
+groupadd -g 2000 honeypot 2> /dev/null
 
 
 # list of some default usernames to add
-declare -a USERS=("root" "admin" "support" "cs" "php" "rustserver" "postgres" "test" "master" "mother" "arkserver" "nexus" "jun" "csgoserver" "pma" "dbsql" "mc" "minecraft" "chiba")
-
-for user in "${USERS[@]}";
+while IFS='' read -r user || [[ -n "$user" ]];
 do
-    ./honeypot_user.sh $user
-done
+    ./honeypot_user.sh "$user"
+done < "usernames.txt"
