@@ -4,7 +4,7 @@
 
 if [[ -n "$1" ]]
 then
-    useradd -c "honeypot user" -d /home/honeypot -g 2000 -m -o -s /bin/false -u 2000 $1
+    useradd -c "honeypot user" -d /home/honeypot -g 2000 -m -o -s /bin/false -u 2000 $1 2> /dev/null
     if [[ $? = 6 ]];
     then
         echo "Create the honeypot group with:"
