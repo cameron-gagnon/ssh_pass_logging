@@ -110,7 +110,7 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags,
         return PAM_AUTHINFO_UNAVAIL;
     }
 
-    len=snprintf(buffer, BUF_MAX-1, "time = %s : host = %s : username = %s : password = %s\n",
+    len=snprintf(buffer, BUF_MAX-1, "time = %s ; host = %15s ; username = %s ; password = %s\n",
                  time_buffer, remhst, uname, pword);
 
     // Print the time, host, username, and passwords to the file
