@@ -4,13 +4,18 @@
 
 if [[ -n "$1" ]]
 then
-    useradd -c "honeypot user" -d /home/honeypot -g 2000 -m -o -s /bin/false -u 2000 $1 2> /dev/null
-    if [[ $? = 6 ]];
+    ERROR_DATA=$( { useradd -c "honeypot user" -d /home/honeypot -g 2000 -m -o -s /bin/false -u 2000 $1; } 2>&1 )
+    ret_code=$?
+    if [[ $ret_code = 6 ]];
     then
         echo "Create the honeypot group with:"
         echo -e "\t 'groupadd -g 2000 honeypot'"
-    else
+    elif [[ $ret_code = 0 ]];
+    then
         echo "Successfully created user: $1"
+    elif [[ $ret_code != 9 ]];
+    then
+        echo "ERROR OCCURRED: $ERROR_DATA"
     fi
 else
     echo "Example use of script:"
