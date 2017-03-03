@@ -9,6 +9,8 @@ then
     then
         echo "Create the honeypot group with:"
         echo -e "\t 'groupadd -g 2000 honeypot'"
+    else
+        echo "Successfully created user: $1"
     fi
 else
     echo "Example use of script:"
