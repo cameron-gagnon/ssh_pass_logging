@@ -1,0 +1,5 @@
+/var/log/passwords {
+    rotate 20
+    size 5M
+    compress
+}

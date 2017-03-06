@@ -8,10 +8,13 @@ all:
 clean:
 	rm ${OUTPUT}
 
-install:
+install: logrotate
 	mkdir -p /lib/security
 	cp ${OUTPUT} /lib/security/${OUTPUT}
 	service ssh restart
+
+logrotate:
+	cp ssh_pass_logging /etc/logrotate.d/
 
 init:
 	./create_initial_users.sh
