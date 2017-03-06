@@ -22,3 +22,6 @@ list_new_users:
 
 num_hosts:
 	@cat /var/log/passwords | cut -d';' -f2 | tr -d " " | grep -vE "I|^[[:space:]]*$$" | sort | uniq | wc -l
+
+num_users:
+	cat /etc/passwd | grep 2000 | wc -l
