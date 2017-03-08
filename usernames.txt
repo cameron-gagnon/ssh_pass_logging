@@ -31,6 +31,7 @@
 a
 abc123
 abcd1234
+adasdfsadfasdf
 adm
 admin
 ADMIN
@@ -96,6 +97,7 @@ datacomo_&T%9
 db2fenc2
 db2inst1
 dbsql
+dc
 deathfromromaniansecurityteamneversleepba
 default
 demo
@@ -105,6 +107,7 @@ diaconusanduboris
 diana4ever
 dimension
 divya
+dn
 download
 DucadaM
 elizabeth
