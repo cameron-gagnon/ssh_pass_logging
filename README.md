@@ -1,7 +1,7 @@
 # SSH Password Logging
 
 
-### Disclaimer:
+# Disclaimer:
 I know this is a security risk. Any machines this module is
 enacted on should have no confidential/personal information on it, and should not be
 shared with any other users. Really, the machine this work is done on
@@ -13,41 +13,38 @@ specific PAM setup.
 # Key changes
 Many hours were spent with unsuccessful PAM set ups. This is because previous
 versions of ssh + PAM allowed changes to be placed in what turns out to be
-completely different files.  To set up password logging in a few simple steps,
+completely different files. To set up password logging in a few simple steps,
 one can do the following:
 
 __Note: This was done on an Ubuntu 16.04 instance running on DigitalOcean's
 servers. Slight changes in other OS's or versions may cause these exact steps
 to fail.__
 
-1.
-Create a build directory. Mine looked like this:
-```
+1. Create a build directory. Mine looked like this:
+```bash
 $ mkdir /usr/build
 ```
 
-2.
-Clone this repository
-```
+2. Clone this repository
+
+```bash
 $ cd /usr/build
 $ git clone https://github.com/cameron-gagnon/ssh_pass_logging.git
 ```
 
-3.
-Make the pam_storepw.so file
-```
+3. Make the pam_storepw.so file
+```bash
 $ cd ssh_pass_logging
 $ make
 ```
 
-4.
-Edit the PAM file
-```
+4. Edit the PAM file
+```bash
 $ vim /etc/pam.d/common-auth
 ```
 
-Insert the lines prepended with '+'s in between the lines that already exist. DON'T ACTUALLY INSERT THE '+'s INTO THE FILE, JUST THE TEXT AFTER THEM.
-```
+Insert the lines prepended with '+'s in between the lines that already exist. **DON'T ACTUALLY INSERT THE '+'s INTO THE FILE, JUST THE TEXT AFTER THEM.**
+```bash
 auth [success=1 default=ignore] pam_unix.so nullok_secure
 
 + # custom PAM module
@@ -57,21 +54,17 @@ auth [success=1 default=ignore] pam_unix.so nullok_secure
 auth requisite pam_deny.so
 ```
 
-5.
-Go back to your build directory and install the file.
-
-```
+5. Go back to your build directory and install the file.
+```bash
 $ cd /usr/build/ssh_pass_logging
 $ make install
 ```
 
 This will also restart ssh and reload the new changes.
 
-6.
-???
+6. :question::question::question:
 
-7.
-Profit
+7. :fire: :fire: :fire: **Profit** :fire: :fire: :fire:
 
 
 ## Logged Password Output
@@ -86,9 +79,9 @@ to the `/var/log/passwords` file.
 ## Troubleshooting
 Send me a message or create an issue! Also, check to make sure that "UsePAM yes" exists in your /etc/sshd_config file and
 that password based authentication is enabled. In my case I use public key authentication by default when setting up a VPS
-on DigitalOcean, so PasswordAuthentication is disabled by default. Finally, make sure that "PermitRootLogin" is enabled so
-that ssh will allow attempts to log in at the root user.
-```
+on DigitalOcean, so PasswordAuthentication is disabled by default. Finally, make sure that `PermitRootLogin` is enabled so
+that ssh will allow attempts to log in as the root user.
+```bash
 $ cat /etc/ssh/sshd_config | grep "UsePAM"
 UsePAM yes
 $ cat /etc/ssh/sshd_config | grep "PasswordAuthentication"
