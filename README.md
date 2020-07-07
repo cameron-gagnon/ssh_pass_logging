@@ -6,8 +6,9 @@ I know this is a security risk. Any machines this module is
 enacted on should have no confidential/personal information on it, and should not be
 shared with any other users. Really, the machine this work is done on
 should only be used for this work and nothing else. Any real authentication should
-take place via public-key authorization to completely avoid going through this
-specific PAM setup.
+take place via public-key authentication to completely avoid going through this
+specific PAM setup. In fact, you may be unable to log in with username and password
+authentication after applying these changes. See issue [#1](/../../issues/1).
 
 
 # Key changes
